@@ -87,6 +87,7 @@ export const QuillEditor = defineComponent({
     'selectionChange',
     'editorChange',
     'update:content',
+    'updateContent',
     'focus',
     'blur',
     'ready',
@@ -235,6 +236,8 @@ export const QuillEditor = defineComponent({
       // Update v-model:content when text changes
       if (!internalModelEquals(props.content)) {
         ctx.emit('update:content', internalModel)
+        
+        ctx.emit('updateContent', internalModel)
       }
       ctx.emit('textChange', { delta, oldContents, source })
     }
